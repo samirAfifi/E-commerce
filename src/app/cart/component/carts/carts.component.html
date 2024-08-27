@@ -1,0 +1,51 @@
+<div class="cartBox">
+    <h1 class="text-danger">Shopping Cart</h1>
+    <div class="headCart">
+        <p class="lead">You have <label class="text-danger ps-2 pe-2">{{cartProducts.length}}</label>Item in your cart</p>
+        <span class="text-danger card-header" (click)="clearCart()">Clear Cart</span>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th></th>
+                <th>name</th>
+                <th>price</th>
+                <th class="w-25" >quantity</th>
+                <th>total</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+         
+                <tr *ngFor="let product of  cartProducts">
+                    <td class="tdImge "><img class="w-100" src="{{product.item.image}}" alt="ggg"></td>
+                    <td>{{product.item.title}}</td>
+                    <td>{{product.item.price}} L.E</td>
+                    <td>
+                        <div class="quantity d-flex ">
+                            <button class="btn btn-dark" (click)="minsControl(product)">-</button>
+                            <input type="number" class="form-control ms-2 me-2 text-center" min="1" (change)="detectChange()" [(ngModel)]="product.quantity">
+                            <button class="btn btn-success" (click)="plusControl(product)">+</button>
+                        </div>
+                    </td>
+                    <td>{{product.item.price * product.quantity}} L.E</td>
+                    <td><button (click)="deleteProduct(product)" class="btn btn-danger">Remove</button></td>
+                    
+                </tr>
+            
+        </tbody>
+        <tfoot>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>Total : {{total}} L.E</th>
+                <th><button class="btn btn-success" (click)="addToCart()">older Now</button></th>
+            </tr>
+        </tfoot>
+
+    </table>
+
+</div>
+<div class="alert alert-success" role="alert" *ngIf="success"> <strong>Well Done!</strong> your order is Successfully Send.. </div>

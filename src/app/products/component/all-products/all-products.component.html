@@ -1,0 +1,19 @@
+<div class="mt-5">
+    <div class="my-3">
+     <app-selet [data]="categoriesList" (seletedValue)="filterByCategory($event)" >
+     </app-selet>
+
+    </div>
+    <div class="row g-4" *ngIf="!isLoading">
+        <div class="col-md-3 col-sm-12" *ngFor="let product of productList" >
+           <app-product-items [productData]="product" (addToCART)="addToCart($event)"  ></app-product-items>
+
+
+        </div><!--/col-->
+    </div><!--/row-->
+
+    <div *ngIf="isLoading">
+        <app-spinner></app-spinner>
+    </div>
+
+</div><!--box-->

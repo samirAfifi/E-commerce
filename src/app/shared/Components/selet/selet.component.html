@@ -1,0 +1,7 @@
+<label class="my-3 " >Categories :</label>
+<select class="form-control" (change)="delterByCategory($event)" >
+    <option value="all" selected> All</option>
+  
+    <option value="{{category}}" *ngFor="let category of data">{{category}}</option>
+   
+</select>
